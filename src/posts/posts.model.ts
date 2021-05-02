@@ -9,8 +9,10 @@ import {
 import { User } from 'src/users/user.model';
 
 interface PostCreationAttrs {
-  email: string;
-  password: string;
+  title: string;
+  content: string;
+  image: string;
+  userId: number;
 }
 
 @Table({ tableName: 'posts' })

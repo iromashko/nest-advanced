@@ -9,6 +9,9 @@ import { UserRoles } from './roles/user-roles.model';
 import { AuthModule } from './auth/auth.module';
 import { PostsModule } from './posts/posts.module';
 import { Post } from './posts/posts.model';
+import { FilesModule } from './files/files.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import * as path from 'path';
 
 @Module({
   controllers: [],
@@ -27,10 +30,14 @@ import { Post } from './posts/posts.model';
       models: [User, Role, UserRoles, Post],
       autoLoadModels: true,
     }),
+    ServeStaticModule.forRoot({
+      rootPath: path.resolve(__dirname, 'static'),
+    }),
     UsersModule,
     RolesModule,
     AuthModule,
     PostsModule,
+    FilesModule,
   ],
 })
 export class AppModule {}
